@@ -71,6 +71,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("Login"), this.Login, uri, username, password, default(Action<LoginRedirectEventArgs>));
         }
 
+        public BrowserCommandResult<LoginResult> Login(String uri, String username, String password)
+        {
+            return this.Execute(GetOptions("Login"), this.Login, new Uri(uri), username.ToSecureString(), password.ToSecureString(), default(Action<LoginRedirectEventArgs>));
+        }
+
         /// <summary>
         /// Login Page
         /// </summary>
@@ -89,8 +94,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             var redirect = false;
             bool online = !(this.OnlineDomains != null && !this.OnlineDomains.Any(d => uri.Host.EndsWith(d)));
             driver.Navigate().GoToUrl(uri);
-            
-            if (online)
+
+            if (true)
             {
                 if (driver.IsVisible(By.Id("use_another_account_link")))
                     driver.ClickWhenAvailable(By.Id("use_another_account_link"));
@@ -120,8 +125,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, driver));
 
                     redirect = true;
-
-                    MarkOperation(driver);
                 }
                 else
                 {
@@ -134,15 +137,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     if (driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])))
                     {
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]));
-                        
+
                         //Click didn't work so use submit
-                        if(driver.HasElement(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])))
+                        if (driver.HasElement(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])))
                             driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])).Submit();
                     }
 
                     driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.CrmMainPage])
                         , new TimeSpan(0, 0, 60),
-                        e => 
+                        e =>
                         {
                             e.WaitForPageToLoad();
                             MarkOperation(driver);

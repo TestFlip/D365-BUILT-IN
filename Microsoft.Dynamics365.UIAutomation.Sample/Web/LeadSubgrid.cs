@@ -6,8 +6,9 @@ using Microsoft.Dynamics365.UIAutomation.Api;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
 using System.Security;
+using Microsoft.Dynamics365.UIAutomation.Sample;
 
-namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
+namespace Microsoft.Dynamics365.UIAutomation.Tests
 {
     [TestClass]
     public class LeadSubgrid

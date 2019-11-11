@@ -37,6 +37,22 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// <param name="orgUrl">URL of the organization</param>
         /// <param name="username">User name</param>
         /// <param name="password">Password</param>
+        public void Login(String orgUrl, String username, String password)
+        {
+            _client.Login(new Uri(orgUrl), username.ToSecureString(), password.ToSecureString());
+
+            if (_client.Browser.Options.UCITestMode)
+            {
+                _client.InitializeTestMode(true);
+            }
+        }
+
+        /// <summary>
+        /// Logs into the organization with the user and password provided
+        /// </summary>
+        /// <param name="orgUrl">URL of the organization</param>
+        /// <param name="username">User name</param>
+        /// <param name="password">Password</param>
         /// <param name="redirectAction">Actions required during redirect</param>
         public void Login(Uri orgUrl, SecureString username, SecureString password, Action<LoginRedirectEventArgs> redirectAction)
         {
