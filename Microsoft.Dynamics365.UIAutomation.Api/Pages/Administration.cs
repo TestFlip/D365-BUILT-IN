@@ -20,7 +20,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             SwitchToContentFrame();
         }
 
-        public BrowserCommandResult<bool> OpenFeature(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenFeature(string name)
+        {
+            return OpenFeature(name, Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> OpenFeature(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

@@ -28,9 +28,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switches between the DashBoard.
         /// </summary>
         /// <param name="dashBoardName">The name of the DashBoard you want to select</param>
+        /// <example>xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");</example>
+        public BrowserCommandResult<bool> SelectDashBoard(string dashBoardName)
+        {
+            return SelectDashBoard(dashBoardName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Switches between the DashBoard.
+        /// </summary>
+        /// <param name="dashBoardName">The name of the DashBoard you want to select</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");</example>
-        public BrowserCommandResult<bool> SelectDashBoard(string dashBoardName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectDashBoard(string dashBoardName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -63,7 +73,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Opens the view picker.
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker()
+        {
+            return OpenViewPicker(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens the view picker.
+        /// </summary>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

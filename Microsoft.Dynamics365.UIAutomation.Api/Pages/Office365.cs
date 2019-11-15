@@ -30,7 +30,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             }
         }
 
-        public BrowserCommandResult<bool> CreateUser(string firstname, string lastname, string displayname, string username, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> CreateUser(string firstname, string lastname, string displayname, string username)
+        {
+            return CreateUser(firstname, lastname, displayname, username, Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> CreateUser(string firstname, string lastname, string displayname, string username, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 

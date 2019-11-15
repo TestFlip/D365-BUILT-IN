@@ -29,7 +29,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             Dialog,
             Workflow
         }
-        public BrowserCommandResult<bool> CreateProcess(string name, ProcessType type, string entity, int thinkTime = Constants.DefaultThinkTime)
+
+        public BrowserCommandResult<bool> CreateProcess(string name, ProcessType type, string entity)
+        {
+            return CreateProcess(name, type, entity, Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> CreateProcess(string name, ProcessType type, string entity, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -51,7 +57,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-        public BrowserCommandResult<bool> Activate(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Activate()
+        {
+            return Activate(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> Activate(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -67,7 +78,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-        public BrowserCommandResult<bool> Deactivate(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Deactivate()
+        {
+            return Deactivate(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> Deactivate(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -82,7 +98,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> Delete(int thinkTime = Constants.DefaultThinkTime)
+
+        public BrowserCommandResult<bool> Delete()
+        {
+            return Delete(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> Delete(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

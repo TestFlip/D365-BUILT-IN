@@ -48,7 +48,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Closes the Guided Help
         /// </summary>
         /// <example>xrmBrowser.GuidedHelp.CloseGuidedHelp();</example>
-        public BrowserCommandResult<bool> CloseGuidedHelp(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> CloseGuidedHelp()
+        {
+            return CloseGuidedHelp(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Closes the Guided Help
+        /// </summary>
+        /// <example>xrmBrowser.GuidedHelp.CloseGuidedHelp();</example>
+        public BrowserCommandResult<bool> CloseGuidedHelp(int thinkTime )
         {
             this.Browser.ThinkTime(thinkTime);
             return this.Execute(GetOptions("Close Guided Help"), driver =>

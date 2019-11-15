@@ -27,9 +27,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Cancel the Quick Create Page
         /// </summary>
+        /// <example>xrmBrowser.QuickCreate.Cancel();</example>
+        public BrowserCommandResult<bool> Cancel()
+        {
+            return Cancel(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Cancel the Quick Create Page
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.QuickCreate.Cancel();</example>
-        public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Cancel(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -241,7 +250,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="option">The option you want to clear.</param>
         /// <example>xrmBrowser.QuickCreate.ClearValue(new OptionSet { Name = "preferredcontactmethodcode"});</example>
-        public BrowserCommandResult<bool> ClearValue(MultiValueOptionSet option, bool removeExistingValues = false)
+        public BrowserCommandResult<bool> ClearValue(MultiValueOptionSet option)
+        {
+            return ClearValue(option, false);
+        }
+
+        /// <summary>
+        /// Placeholder
+        /// </summary>
+        /// <param name="option">The option you want to clear.</param>
+        /// <example>xrmBrowser.QuickCreate.ClearValue(new OptionSet { Name = "preferredcontactmethodcode"});</example>
+        public BrowserCommandResult<bool> ClearValue(MultiValueOptionSet option, bool removeExistingValues)
         {
             return this.Execute(GetOptions($"Clear QuickCreate MultiValueOptionSet Value: {option.Name}"), driver =>
             {
@@ -533,9 +552,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Save the Quick create page
         /// </summary>
+        /// <example>xrmBrowser.QuickCreate.Save();</example>
+        public BrowserCommandResult<bool> Save()
+        {
+            return Save(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Save the Quick create page
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.QuickCreate.Save();</example>
-        public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Save(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -555,9 +583,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Set Lookup Value for the field
         /// </summary>
         /// <param name="field">The Field</param>
+        public new BrowserCommandResult<bool> SelectLookup(LookupItem field)
+        {
+            return SelectLookup(field, true, true);
+        }
+
+        /// <summary>
+        /// Set Lookup Value for the field
+        /// </summary>
+        /// <param name="field">The Field</param>
         /// <param name="openLookupPage">The Open Lookup Page</param>
         /// <param name="clearFieldValue">Remove Existing Field Value, if present. False = Click the existing value</param>
-        public new BrowserCommandResult<bool> SelectLookup(LookupItem field, bool clearFieldValue = true, bool openLookupPage = true)
+        public new BrowserCommandResult<bool> SelectLookup(LookupItem field, bool clearFieldValue, bool openLookupPage)
         {
             return this.Execute(GetOptions($"Select QuickCreate Lookup for: {field.Name}"), driver =>
             {

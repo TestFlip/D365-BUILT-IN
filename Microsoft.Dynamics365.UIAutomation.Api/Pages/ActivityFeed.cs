@@ -42,6 +42,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
             Email
         }
 
+        /// <summary>
+        /// Selects the tab.
+        /// </summary>
+        /// <param name="tabname">The TabName you want to select.</param>
+        /// <example>xrmBrowser.ActivityFeed.SelectTab(Api.Pages.XrmActivityFeedPage.Tab.Activities);</example>
+        public BrowserCommandResult<bool> SelectTab(Tab tabname)
+        {
+            return SelectTab(tabname, Constants.DefaultThinkTime);
+        }
+
 
         /// <summary>
         /// Selects the tab.
@@ -49,7 +59,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <param name="tabname">The TabName you want to select.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.SelectTab(Api.Pages.XrmActivityFeedPage.Tab.Activities);</example>
-        public BrowserCommandResult<bool> SelectTab(Tab tabname, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectTab(Tab tabname, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -76,9 +86,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Adds Notes to the activity feed
         /// </summary>
         /// <param name="noteText">The NoteText you want to add</param>
+        /// <example>xrmBrowser.ActivityFeed.AddNote("Test Add Note");</example>
+        public BrowserCommandResult<bool> AddNote(string noteText)
+        {
+            return AddNote(noteText, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Adds Notes to the activity feed
+        /// </summary>
+        /// <param name="noteText">The NoteText you want to add</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddNote("Test Add Note");</example>
-        public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -107,9 +127,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Adds Post to the activity feed
         /// </summary>
         /// <param name="postText">The Text you want to post</param>
+        /// <example>xrmBrowser.ActivityFeed.AddPost("Test Add Post");</example>
+        public BrowserCommandResult<bool> AddPost(string postText)
+        {
+            return AddPost(postText, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Adds Post to the activity feed
+        /// </summary>
+        /// <param name="postText">The Text you want to post</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddPost("Test Add Post");</example>
-        public BrowserCommandResult<bool> AddPost(string postText, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddPost(string postText, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -134,9 +164,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Filters Activities by Status
         /// </summary>
         /// <param name="status">The Status</param>
+        /// <example>xrmBrowser.ActivityFeed.FilterActivitiesByStatus(Api.Pages.XrmActivityFeedPage.Status.Overdue);</example>
+        public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status)
+        {
+            return FilterActivitiesByStatus(status, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Filters Activities by Status
+        /// </summary>
+        /// <param name="status">The Status</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.FilterActivitiesByStatus(Api.Pages.XrmActivityFeedPage.Status.Overdue);</example>
-        public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -159,8 +199,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <summary>
         /// Opens Activities Associated View
         /// </summary>
+        public BrowserCommandResult<bool> OpenActivitiesAssociatedView()
+        {
+            return OpenActivitiesAssociatedView(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens Activities Associated View
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<bool> OpenActivitiesAssociatedView(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenActivitiesAssociatedView(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -181,9 +229,21 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <param name="description">The description</param>
         /// <param name="leftVoiceMail">The leftVoiceMail</param>
         /// <param name="outgoing">The outgoing</param>
+        /// <example>xrmBrowser.ActivityFeed.AddPhoneCall("Test Phone call Description",false);</example>
+        public BrowserCommandResult<bool> AddPhoneCall(string description, bool leftVoiceMail, bool outgoing)
+        {
+            return AddPhoneCall(description, leftVoiceMail, outgoing, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Adds PhoneCall to the activity feed
+        /// </summary>
+        /// <param name="description">The description</param>
+        /// <param name="leftVoiceMail">The leftVoiceMail</param>
+        /// <param name="outgoing">The outgoing</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddPhoneCall("Test Phone call Description",false);</example>
-        public BrowserCommandResult<bool> AddPhoneCall(string description, bool leftVoiceMail, bool outgoing = true, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddPhoneCall(string description, bool leftVoiceMail, bool outgoing, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -216,8 +276,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <param name="description">The description</param>
         /// <param name="dueDate">The dueDate</param>
         /// <param name="priority">The priority</param>
+        public BrowserCommandResult<bool> AddTask(string subject, string description, DateTime dueDate, OptionSet priority)
+        {
+            return AddTask(subject, description, dueDate, priority, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Adds task to the activity feed
+        /// </summary>
+        /// <param name="subject">The subject</param>
+        /// <param name="description">The description</param>
+        /// <param name="dueDate">The dueDate</param>
+        /// <param name="priority">The priority</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<bool> AddTask(string subject, string description, DateTime dueDate, OptionSet priority, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddTask(string subject, string description, DateTime dueDate, OptionSet priority, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -270,9 +342,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <summary>
         /// Adds Email to the activity feed
         /// </summary>
+        /// <example>xrmBrowser.ActivityFeed.AddEmail();</example>
+        public BrowserCommandResult<bool> AddEmail()
+        {
+            return AddEmail(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Adds Email to the activity feed
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddEmail();</example>
-        public BrowserCommandResult<bool> AddEmail(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddEmail(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -293,9 +374,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <summary>
         /// Adds Appointment to the activity feed
         /// </summary>
+        /// <example>xrmBrowser.ActivityFeed.AddAppointment();</example>
+        public BrowserCommandResult<bool> AddAppointment()
+        {
+            return AddAppointment(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Adds Appointment to the activity feed
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddAppointment();</example>
-        public BrowserCommandResult<bool> AddAppointment(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddAppointment(int thinkTime )
         {
             Browser.ThinkTime(thinkTime);
 

@@ -26,9 +26,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Cancel the Report
         /// </summary>
-        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Report.Cancel();</example>
-        public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Cancel()
+        {
+            return Cancel(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Cancel the Report
+        /// </summary>
+        /// <example>xrmBrowser.Report.Cancel();</example>
+        public BrowserCommandResult<bool> Cancel(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -43,9 +51,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Run the Report
         /// </summary>
+        /// <example>xrmBrowser.Report.RunReport(customaction);</example>
+        public BrowserCommandResult<bool> RunReport(Action<ReportEventArgs> setFilterCriteriaAction)
+        {
+            return RunReport(setFilterCriteriaAction, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Run the Report
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Report.RunReport(customaction);</example>
-        public BrowserCommandResult<bool> RunReport(Action<ReportEventArgs> setFilterCriteriaAction, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> RunReport(Action<ReportEventArgs> setFilterCriteriaAction, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

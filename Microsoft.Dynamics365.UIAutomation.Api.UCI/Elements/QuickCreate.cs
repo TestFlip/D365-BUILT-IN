@@ -151,9 +151,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// <param name="field">Date field name.</param>
         /// <param name="date">DateTime value.</param>
         /// <param name="format">Datetime format matching Short Date & Time formatting personal options.</param>
-        public void SetValue(string field, DateTime date, string format = "M/d/yyyy h:mm tt")
+        public void SetValue(string field, DateTime date, string format)
         {
             _client.SetValue(field, date, format);
+        }
+
+        /// <summary>
+        /// Sets the value of a Date Field.
+        /// </summary>
+        /// <param name="field">Date field name.</param>
+        /// <param name="date">DateTime value.</param>
+        public void SetValue(string field, DateTime date)
+        {
+            _client.SetValue(field, date, "M/d/yyyy h:mm tt");
         }
 
         /// <summary>
@@ -161,9 +171,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// </summary>
         /// <param name="option">Object of type MultiValueOptionSet containing name of the Field and the values to be set/removed</param>
         /// <param name="removeExistingValues">False - Values will be set. True - Values will be removed</param>
-        public void SetValue(MultiValueOptionSet option, bool removeExistingValues = false)
+        public void SetValue(MultiValueOptionSet option, bool removeExistingValues)
         {
             _client.SetValue(option, removeExistingValues);
+        }
+
+        /// <summary>
+        /// Sets/Removes the value from the multselect type control
+        /// </summary>
+        /// <param name="option">Object of type MultiValueOptionSet containing name of the Field and the values to be set/removed</param>
+        /// <param name="removeExistingValues">False - Values will be set. True - Values will be removed</param>
+        public void SetValue(MultiValueOptionSet option)
+        {
+            _client.SetValue(option, false);
         }
 
         /// <summary>

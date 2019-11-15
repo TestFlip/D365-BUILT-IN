@@ -46,9 +46,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// Sets the stage provided to Active
         /// </summary>
         /// <param name="stageName">Name of the business process flow stage</param>
-        public void SetActive(string stageName = "")
+        public void SetActive(string stageName)
         {
             _client.SetActive(stageName);
+        }
+
+        /// <summary>
+        /// Sets the stage provided to Active
+        /// </summary>
+        public void SetActive()
+        {
+            _client.SetActive("");
         }
 
         /// <summary>
@@ -56,9 +64,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// </summary>
         /// <param name="stageName">Name of the business process flow stage</param>
         /// <param name="businessProcessFlowField">Optional - field to set the value on for this business process flow stage</param>
-        public void NextStage(string stageName, Field businessProcessFlowField = null)
+        public void NextStage(string stageName, Field businessProcessFlowField)
         {
             _client.NextStage(stageName, businessProcessFlowField);
+        }
+
+        /// <summary>
+        /// Clicks "Next Stage" on the stage provided
+        /// </summary>
+        /// <param name="stageName">Name of the business process flow stage</param>
+        public void NextStage(string stageName)
+        {
+            _client.NextStage(stageName, null);
         }
 
         /// <summary>
@@ -101,7 +118,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// Sets the value of a LookupItem field
         /// </summary>
         /// <param name="field">LookupItem with the schema name of the field to retrieve</param>
-        public void SetValue(LookupItem control, int index = 0)
+        public void SetValue(LookupItem control, int index)
         {
             _client.SetValue(control, index);
         }
@@ -110,18 +127,36 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// Sets the value of a Date field
         /// </summary>
         /// <param name="field">Schema name of the field to retrieve</param>
-        public void SetValue(string field, DateTime date, string format = "MM dd yyyy")
+        public void SetValue(string field, DateTime date, string format)
         {
             _client.SetValue(field, date, format);
+        }
+
+        /// <summary>
+        /// Sets the value of a Date field
+        /// </summary>
+        /// <param name="field">Schema name of the field to retrieve</param>
+        public void SetValue(string field, DateTime date)
+        {
+            SetValue(field, date, "MM dd yyyy");
         }
 
         /// <summary>
         /// Sets the value of a MultiValueOptionSet field
         /// </summary>
         /// <param name="field">MultiValueOptionSet with the schema name of the field to retrieve</param>
-        public void SetValue(MultiValueOptionSet option, bool removeExistingValues = false)
+        public void SetValue(MultiValueOptionSet option, bool removeExistingValues)
         {
             _client.SetValue(option, removeExistingValues);
+        }
+
+        /// <summary>
+        /// Sets the value of a MultiValueOptionSet field
+        /// </summary>
+        /// <param name="field">MultiValueOptionSet with the schema name of the field to retrieve</param>
+        public void SetValue(MultiValueOptionSet option)
+        {
+            SetValue(option, false);
         }
 
         /// <summary>

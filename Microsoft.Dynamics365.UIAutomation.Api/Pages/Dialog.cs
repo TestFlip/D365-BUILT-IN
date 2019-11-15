@@ -39,6 +39,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             SelectedRecords,
             AllRecordsOnPage
         }
+
+        /// <summary>
+        /// Closes the opportunity you are currently working on.
+        /// </summary>
+        /// <param name="revenue">The revenue you want to assign to the opportunity.</param>
+        /// <param name="closeDate">The close date for the opportunity.</param>
+        /// <param name="description">The description of the closing.</param>
+        /// <example>xrmBrowser.Dialogs.CloseOpportunity(10000, DateTime.Now, "Testing the Close Opportunity API");</example>
+        public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description)
+        {
+            return CloseOpportunity(revenue, closeDate, description, Constants.DefaultThinkTime);
+        }
+
         /// <summary>
         /// Closes the opportunity you are currently working on.
         /// </summary>
@@ -47,7 +60,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <param name="description">The description of the closing.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.CloseOpportunity(10000, DateTime.Now, "Testing the Close Opportunity API");</example>
-        public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
             return this.Execute(GetOptions("Close Opportunity"), driver =>
@@ -71,7 +84,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="index">The address to choose, starting from 1</param>
         /// <example>xrmBrowser.Dialogs.ChooseFoundPlace(1);</example>
-        public BrowserCommandResult<bool> ChooseFoundPlace(int index, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> ChooseFoundPlace(int index)
+        {
+            return ChooseFoundPlace(index, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Closes the opportunity you are currently working on.
+        /// </summary>
+        /// <param name="index">The address to choose, starting from 1</param>
+        /// <example>xrmBrowser.Dialogs.ChooseFoundPlace(1);</example>
+        public BrowserCommandResult<bool> ChooseFoundPlace(int index, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
             return this.Execute(GetOptions("Choose Address From Found Places Dialog"), driver =>
@@ -93,6 +116,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 return true;
             });
+        }
+
+        public BrowserCommandResult<bool> AddConnection(string description, string roleName)
+        {
+            return AddConnection(description, roleName, Constants.DefaultThinkTime);
         }
 
         public BrowserCommandResult<bool> AddConnection(string description, string roleName, int thinkTime = Constants.DefaultThinkTime)
@@ -153,9 +181,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="to">The User or Team you want to assign the record to</param>
         /// <param name="value">The value of the User or Team you want to find and select</param>
+        /// <example>xrmBrowser.Dialogs.Assign(XrmDialogPage.AssignTo.Me, "");</example>
+        public BrowserCommandResult<bool> Assign(AssignTo to, string value)
+        {
+            return Assign(to, value, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Assigns the record to a User or Team
+        /// </summary>
+        /// <param name="to">The User or Team you want to assign the record to</param>
+        /// <param name="value">The value of the User or Team you want to find and select</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.Assign(XrmDialogPage.AssignTo.Me, "");</example>
-        public BrowserCommandResult<bool> Assign(AssignTo to, string value, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Assign(AssignTo to, string value, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 
@@ -188,9 +227,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Deletes the selected record.
         /// </summary>
+        /// <example>xrmBrowser.Dialogs.Delete();</example>
+        public BrowserCommandResult<bool> Delete()
+        {
+            return Delete(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Deletes the selected record.
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.Delete();</example>
-        public BrowserCommandResult<bool> Delete(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Delete(int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 
@@ -226,9 +274,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Checks for Duplicate Detection Dialog. If duplicate detection is enable then you can confirm the save or cancel.
         /// </summary>
         /// <param name="save">If set to <c>true</c> Save the record otherwise it will cancel.</param>
+        /// <example>xrmBrowser.Dialogs.DuplicateDetection(true);</example>
+        public BrowserCommandResult<bool> DuplicateDetection(bool save)
+        {
+            return DuplicateDetection(save, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Checks for Duplicate Detection Dialog. If duplicate detection is enable then you can confirm the save or cancel.
+        /// </summary>
+        /// <param name="save">If set to <c>true</c> Save the record otherwise it will cancel.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.DuplicateDetection(true);</example>
-        public BrowserCommandResult<bool> DuplicateDetection(bool save, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> DuplicateDetection(bool save, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 
@@ -253,9 +311,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Checks for Duplicate Warning dialog on Lead Qualification. If the pop-up appears, then you can confirm the save or cancel.
         /// </summary>
         /// <param name="save">If set to <c>true</c> Save the record otherwise it will cancel.</param>
+        /// <example>xrmBrowser.Dialogs.QualifyLead(true);</example>
+        public BrowserCommandResult<bool> QualifyLead(bool save)
+        {
+            return QualifyLead(save, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Checks for Duplicate Warning dialog on Lead Qualification. If the pop-up appears, then you can confirm the save or cancel.
+        /// </summary>
+        /// <param name="save">If set to <c>true</c> Save the record otherwise it will cancel.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.QualifyLead(true);</example>
-        public BrowserCommandResult<bool> QualifyLead(bool save, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> QualifyLead(bool save, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 
@@ -294,9 +362,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Run Work flow
         /// </summary>
         /// <param name="name">The name</param>
+        /// <example>xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");</example>
+        public BrowserCommandResult<bool> RunWorkflow(string name)
+        {
+            return RunWorkflow(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Run Work flow
+        /// </summary>
+        /// <param name="name">The name</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");</example>
-        public BrowserCommandResult<bool> RunWorkflow(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> RunWorkflow(string name, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 
@@ -318,6 +396,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
+        /// <summary>
+        /// Run Work flow
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <example>xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");</example>
+        public BrowserCommandResult<bool> RunReport(ReportRecords records)
+        {
+            return RunReport(records, Constants.DefaultThinkTime);
+        }
 
         /// <summary>
         /// Run Work flow
@@ -325,7 +412,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <param name="name">The name</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");</example>
-        public BrowserCommandResult<bool> RunReport(ReportRecords records, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> RunReport(ReportRecords records, int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 
@@ -355,7 +442,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-        public BrowserCommandResult<bool> AddUser(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> AddUser()
+        {
+            return AddUser(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> AddUser(int thinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
 

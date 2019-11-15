@@ -231,7 +231,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="option">The option you want to clear.</param>
         /// <example>xrmBrowser.Entity.ClearHeaderValue(new OptionSet { Name = "preferredcontactmethodcode"});</example>
-        public BrowserCommandResult<bool> ClearHeaderValue(MultiValueOptionSet option, bool removeExistingValues = false)
+        public BrowserCommandResult<bool> ClearHeaderValue(MultiValueOptionSet option)
+        {
+            return ClearHeaderValue(option, false);
+        }
+
+        /// <summary>
+        /// Placeholder.
+        /// </summary>
+        /// <param name="option">The option you want to clear.</param>
+        /// <example>xrmBrowser.Entity.ClearHeaderValue(new OptionSet { Name = "preferredcontactmethodcode"});</example>
+        public BrowserCommandResult<bool> ClearHeaderValue(MultiValueOptionSet option, bool removeExistingValues)
         {
             return this.Execute(GetOptions($"Clear MultiValueOptionSet Header Value: {option.Name}"), driver =>
             {
@@ -525,7 +535,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="option">The option you want to clear.</param>
         /// <example>xrmBrowser.Entity.ClearValue(new OptionSet { Name = "preferredcontactmethodcode"});</example>
-        public BrowserCommandResult<bool> ClearValue(MultiValueOptionSet option, bool removeExistingValues = false)
+        public BrowserCommandResult<bool> ClearValue(MultiValueOptionSet option)
+        {
+            return ClearValue(option, false);
+        }
+
+        /// <summary>
+        /// Placeholder: MultiValueOptionSets are not currently supported in BPFs.
+        /// </summary>
+        /// <param name="option">The option you want to clear.</param>
+        /// <example>xrmBrowser.Entity.ClearValue(new OptionSet { Name = "preferredcontactmethodcode"});</example>
+        public BrowserCommandResult<bool> ClearValue(MultiValueOptionSet option, bool removeExistingValues)
         {
             return this.Execute(GetOptions($"Clear MultiValueOptionSet Value: {option.Name}"), driver =>
             {
@@ -622,9 +642,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Click add button of subgridName
         /// </summary>
         /// <param name="subgridName">The SubgridName</param>
+        /// <example>xrmBrowser.Entity.ClickSubgridAddButton("Stakeholders");</example>
+        public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName)
+        {
+            return ClickSubgridAddButton(subgridName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Click add button of subgridName
+        /// </summary>
+        /// <param name="subgridName">The SubgridName</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.ClickSubgridAddButton("Stakeholders");</example>
-        public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -640,8 +670,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Click GridView button of subgridName
         /// </summary>
         /// <param name="subgridName">The subgridName</param>
+        public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName)
+        {
+            return ClickSubgridGridViewButton(subgridName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Click GridView button of subgridName
+        /// </summary>
+        /// <param name="subgridName">The subgridName</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -657,7 +696,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Closes the current entity record you are on.
         /// </summary>
         /// <example>xrmBrowser.Entity.CloseEntity();</example>
-        public BrowserCommandResult<bool> CloseEntity(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> CloseEntity()
+        {
+            return CloseEntity(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Closes the current entity record you are on.
+        /// </summary>
+        /// <example>xrmBrowser.Entity.CloseEntity();</example>
+        public BrowserCommandResult<bool> CloseEntity(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -678,9 +726,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Collapses the Tab on a CRM Entity form.
         /// </summary>
         /// <param name="name">The name of the Tab.</param>
+        /// <example>xrmBrowser.Entity.CollapseTab("Summary");</example>
+        public BrowserCommandResult<bool> CollapseTab(string name)
+        {
+            return CollapseTab(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Collapses the Tab on a CRM Entity form.
+        /// </summary>
+        /// <param name="name">The name of the Tab.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.CollapseTab("Summary");</example>
-        public BrowserCommandResult<bool> CollapseTab(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> CollapseTab(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -702,8 +760,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Dismiss the Alert If Present
         /// </summary>
+        public BrowserCommandResult<bool> DismissAlertIfPresent()
+        {
+            return DismissAlertIfPresent(false);
+        }
+
+        /// <summary>
+        /// Dismiss the Alert If Present
+        /// </summary>
         /// <param name="stay"></param>
-        public BrowserCommandResult<bool> DismissAlertIfPresent(bool stay = false)
+        public BrowserCommandResult<bool> DismissAlertIfPresent(bool stay)
         {
 
             return this.Execute(GetOptions("Dismiss Confirm Save Alert"), driver =>
@@ -724,9 +790,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Expands the Tab on a CRM Entity form.
         /// </summary>
         /// <param name="name">The name of the Tab.</param>
+        /// <example>xrmBrowser.Entity.ExpandTab("Summary");</example>
+        public BrowserCommandResult<bool> ExpandTab(string name)
+        {
+            return ExpandTab(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Expands the Tab on a CRM Entity form.
+        /// </summary>
+        /// <param name="name">The name of the Tab.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.ExpandTab("Summary");</example>
-        public BrowserCommandResult<bool> ExpandTab(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> ExpandTab(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1196,9 +1272,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Returns the GUID for the current entity record. 
         /// </summary>
+        /// <example>xrmBrowser.Entity.GetRecordGuid();</example>
+        public BrowserCommandResult<Guid> GetRecordGuid()
+        {
+            return GetRecordGuid(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Returns the GUID for the current entity record. 
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.GetRecordGuid();</example>
-        public BrowserCommandResult<Guid> GetRecordGuid(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<Guid> GetRecordGuid(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1215,9 +1300,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Returns the Entity Name for the current entity record. 
         /// </summary>
+        /// <example>xrmBrowser.Entity.GetEntityName();</example>
+        public BrowserCommandResult<string> GetEntityName()
+        {
+            return GetEntityName(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Returns the Entity Name for the current entity record. 
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.GetEntityName();</example>
-        public BrowserCommandResult<string> GetEntityName(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<string> GetEntityName(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1236,9 +1330,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Returns the state of the tab, either Expanded or Collapsed. 
         /// </summary>
         /// <param name="name">The name of the tab.</param>
+        /// <example>xrmBrowser.Entity.GetTabState("Details");</example>
+        public BrowserCommandResult<string> GetTabState(string name)
+        {
+            return GetTabState(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Returns the state of the tab, either Expanded or Collapsed. 
+        /// </summary>
+        /// <param name="name">The name of the tab.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.GetTabState("Details");</example>
-        public BrowserCommandResult<string> GetTabState(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<string> GetTabState(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1508,9 +1612,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="entityName">The Entity Name you want to open</param>
         /// <param name="id">The Guid</param>
+        /// <example>xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));</example>
+        public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id)
+        {
+            return OpenEntity(entityName, id, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens the Entity
+        /// </summary>
+        /// <param name="entityName">The Entity Name you want to open</param>
+        /// <param name="id">The Guid</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));</example>
-        public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1525,9 +1640,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Navigate Down the record
         /// </summary>
+        /// <example>xrmBrowser.Entity.NavigateDown();</example>
+        public BrowserCommandResult<bool> NavigateDown()
+        {
+            return NavigateDown(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Navigate Down the record
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.NavigateDown();</example>
-        public BrowserCommandResult<bool> NavigateDown(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> NavigateDown(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1551,9 +1675,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Navigate Up the record
         /// </summary>
+        /// <example>xrmBrowser.Entity.NavigateUp();</example>
+        public BrowserCommandResult<bool> NavigateUp()
+        {
+            return NavigateUp(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Navigate Up the record
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.NavigateUp();</example>
-        public BrowserCommandResult<bool> NavigateUp(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> NavigateUp(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1578,8 +1711,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Opens the Entity
         /// </summary>
         /// <param name="uri">The uri</param>
+        public BrowserCommandResult<bool> OpenEntity(Uri uri)
+        {
+            return OpenEntity(uri, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens the Entity
+        /// </summary>
+        /// <param name="uri">The uri</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<bool> OpenEntity(Uri uri, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenEntity(Uri uri, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1606,9 +1748,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Popout the Entity form
         /// </summary>
+        /// <example>xrmBrowser.Entity.Popout();</example>
+        public BrowserCommandResult<bool> Popout()
+        {
+            return Popout(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Popout the Entity form
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.Popout();</example>
-        public BrowserCommandResult<bool> Popout(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Popout(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1626,7 +1777,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.Save();</example>
-        public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Save()
+        {
+            return Save(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Saves the specified entity record.
+        /// </summary>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <example>xrmBrowser.Entity.Save();</example>
+        public BrowserCommandResult<bool> Save(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1673,9 +1834,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the Desired Entity Form
         /// </summary>
         /// <param name="name">The name of the form</param>
+        /// <example>xrmBrowser.Entity.SelectForm("Details");</example>
+        public BrowserCommandResult<bool> SelectForm(string name)
+        {
+            return SelectForm(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Selects the Desired Entity Form
+        /// </summary>
+        /// <param name="name">The name of the form</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.SelectForm("Details");</example>
-        public BrowserCommandResult<bool> SelectForm(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectForm(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1696,9 +1867,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the Form Section
         /// </summary>
         /// <param name="name">The name of the form section</param>
-        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.SelectFormSection("Details");</example>
-        public BrowserCommandResult<bool> SelectFormSection(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectFormSection(string name)
+        {
+            return SelectFormSection(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Selects the Form Section
+        /// </summary>
+        /// <param name="name">The name of the form section</param>
+        /// <example>xrmBrowser.Entity.SelectFormSection("Details");</example>
+        public BrowserCommandResult<bool> SelectFormSection(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1720,9 +1900,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="subgridName">The SubgridName</param>
         /// <param name="value">Used to match where text contains the provided value.</param>
+        /// <example>xrmBrowser.Entity.SelectSubgridLookup("Stakeholders", "Maria Campbell");</example>
+        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value)
+        {
+            return SelectSubgridLookup(subgridName, value, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Set Lookup Value for Subgrid subgridName
+        /// </summary>
+        /// <param name="subgridName">The SubgridName</param>
+        /// <param name="value">Used to match where text contains the provided value.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.SelectSubgridLookup("Stakeholders", "Maria Campbell");</example>
-        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -1787,9 +1978,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Set Lookup Value for Subgrid
         /// </summary>
         /// <param name="subgridName">The SubgridName</param>
+        /// <example>xrmBrowser.Entity.SelectSubgridLookup("Stakeholders", true);</example>
+        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName)
+        {
+            return SelectSubgridLookup(subgridName, false);
+        }
+
+        /// <summary>
+        /// Set Lookup Value for Subgrid
+        /// </summary>
+        /// <param name="subgridName">The SubgridName</param>
         /// <param name="openLookupPage"></param>
         /// <example>xrmBrowser.Entity.SelectSubgridLookup("Stakeholders", true);</example>
-        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, bool openLookupPage = true)
+        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, bool openLookupPage)
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
@@ -1827,9 +2028,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the tab and clicks. If the tab is expanded it will collapse it. If the tab is collapsed it will expand it. 
         /// </summary>
         /// <param name="name">The name of the tab.</param>
+        /// <example>xrmBrowser.Entity.SelectTab("Details");</example>
+        public BrowserCommandResult<bool> SelectTab(string name)
+        {
+            return SelectTab(name, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Selects the tab and clicks. If the tab is expanded it will collapse it. If the tab is collapsed it will expand it. 
+        /// </summary>
+        /// <param name="name">The name of the tab.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.SelectTab("Details");</example>
-        public BrowserCommandResult<bool> SelectTab(string name, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectTab(string name, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -2057,7 +2268,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="option">The option you want to set.</param>
         /// <example>xrmBrowser.Entity.SetHeaderValue(new MultiValueOptionSet { });</example>
-        public BrowserCommandResult<bool> SetHeaderValue(MultiValueOptionSet option, bool removeExistingValues = false)
+        public BrowserCommandResult<bool> SetHeaderValue(MultiValueOptionSet option)
+        {
+            return SetHeaderValue(option, false);
+        }
+
+        /// <summary>
+        /// PLACEHOLDER: Sets the value of a multi-value picklist on an Entity header.
+        /// </summary>
+        /// <param name="option">The option you want to set.</param>
+        /// <example>xrmBrowser.Entity.SetHeaderValue(new MultiValueOptionSet { });</example>
+        public BrowserCommandResult<bool> SetHeaderValue(MultiValueOptionSet option, bool removeExistingValues)
         {
             return this.Execute(GetOptions($"Set MultiOptionSet Header Value: {option.Name}"), driver =>
             {
@@ -2202,6 +2423,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
         #region Subgrid
 
+        /// <summary>
+        /// Retrieve the items from a subgrid.
+        /// </summary>
+        /// <param name="subgridName">Unique name (not label) of the subgrid.</param>
+        /// <example>xrmBrowser.Grid.GetSubGridItems("CONTACTS");</example>
+        public BrowserCommandResult<List<GridItem>> GetSubGridItems(string subgridName)
+        {
+            return GetSubGridItems(subgridName, Constants.DefaultThinkTime);
+        }
 
         /// <summary>
         /// Retrieve the items from a subgrid.
@@ -2209,7 +2439,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <param name="subgridName">Unique name (not label) of the subgrid.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.GetSubGridItems("CONTACTS");</example>
-        public BrowserCommandResult<List<GridItem>> GetSubGridItems(string subgridName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<List<GridItem>> GetSubGridItems(string subgridName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -2305,9 +2535,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="subgridName">Unique name (not label) of the subgrid.</param>
         /// <param name="index">Index of the record to open.</param>
+        /// <example>xrmBrowser.Grid.OpenSubGridRecord("CONTACTS", 0);</example>
+        public BrowserCommandResult<bool> OpenSubGridRecord(string subgridName, int index)
+        {
+            return OpenSubGridRecord(subgridName, index, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Open a record on a subgrid.
+        /// </summary>
+        /// <param name="subgridName">Unique name (not label) of the subgrid.</param>
+        /// <param name="index">Index of the record to open.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.OpenSubGridRecord("CONTACTS", 0);</example>
-        public BrowserCommandResult<bool> OpenSubGridRecord(string subgridName, int index = 0, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenSubGridRecord(string subgridName, int index, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -2330,9 +2571,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="subgridName">Unique name (not label) of the subgrid.</param>
         /// <param name="index">Index of the record to delete.</param>
+        /// <example>xrmBrowser.Grid.DeleteSubGridRecord("CONTACTS", 0);</example>
+        public BrowserCommandResult<bool> DeleteSubGridRecord(string subgridName, int index)
+        {
+            return DeleteSubGridRecord(subgridName, index, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Deletes a record from a subgrid.
+        /// </summary>
+        /// <param name="subgridName">Unique name (not label) of the subgrid.</param>
+        /// <param name="index">Index of the record to delete.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.DeleteSubGridRecord("CONTACTS", 0);</example>
-        public BrowserCommandResult<bool> DeleteSubGridRecord(string subgridName, int index = 0, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> DeleteSubGridRecord(string subgridName, int index, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

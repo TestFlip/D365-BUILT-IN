@@ -80,8 +80,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switch Entity
         /// </summary>
         /// <param name="entityName">The Entity Name</param>
+        public BrowserCommandResult<bool> SwitchEntity(string entityName)
+        {
+            return SwitchEntity(entityName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Switch Entity
+        /// </summary>
+        /// <param name="entityName">The Entity Name</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<bool> SwitchEntity(string entityName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SwitchEntity(string entityName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -103,8 +112,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switches the view
         /// </summary>
         /// <param name="viewName">The ViewName</param>
+        public BrowserCommandResult<bool> SwitchView(string viewName)
+        {
+            return SwitchView(viewName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Switches the view
+        /// </summary>
+        /// <param name="viewName">The ViewName</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -119,6 +137,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 return true;
             });
+        }
+
+        /// <summary>
+        /// Searches based on searchCriteria in Lookup
+        /// </summary>
+        /// <param name="searchCriteria"></param>
+        public BrowserCommandResult<bool> Search(string searchCriteria)
+        {
+            return Search(searchCriteria, Constants.DefaultThinkTime);
         }
 
         /// <summary>
@@ -198,9 +225,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the Item
         /// </summary>
         /// <param name="index">The Index</param>
+        /// <example>xrmBrowser.Lookup.SelectItem(0);</example>
+        public BrowserCommandResult<bool> SelectItem(int index)
+        {
+            return SelectItem(index, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Selects the Item
+        /// </summary>
+        /// <param name="index">The Index</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Lookup.SelectItem(0);</example>
-        public BrowserCommandResult<bool> SelectItem(int index, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectItem(int index, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -222,9 +259,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects Item based on the value given
         /// </summary>
         /// <param name="value">Used to match where text contains the provided value.</param>
+        /// <example>xrmBrowser.Lookup.SelectItem("Alex Wu");</example>
+        public BrowserCommandResult<bool> SelectItem(string value)
+        {
+            return SelectItem(value, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Selects Item based on the value given
+        /// </summary>
+        /// <param name="value">Used to match where text contains the provided value.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Lookup.SelectItem("Alex Wu");</example>
-        public BrowserCommandResult<bool> SelectItem(string value, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectItem(string value, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -255,12 +302,22 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// Add Lookup
+        /// </summary>
+        /// <example>xrmBrowser.Lookup.Add();</example>
+        public BrowserCommandResult<bool> Add()
+        {
+            return Add(Constants.DefaultThinkTime);
+        }
+
         /// <summary>
         /// Add Lookup
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Lookup.Add();</example>
-        public BrowserCommandResult<bool> Add(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Add(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -275,9 +332,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Select from subgrid
         /// </summary>
+        /// <example>xrmBrowser.Lookup.Select();</example>
+        public BrowserCommandResult<bool> Select()
+        {
+            return Select(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Select from subgrid
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Lookup.Select();</example>
-        public BrowserCommandResult<bool> Select(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Select(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -289,7 +355,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-        public BrowserCommandResult<bool> Remove(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Remove()
+        {
+            return Remove(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> Remove(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -301,7 +372,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-        public BrowserCommandResult<bool> New(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> New()
+        {
+            return New(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> New(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -313,7 +389,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-        public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Cancel()
+        {
+            return Cancel(Constants.DefaultThinkTime);
+        }
+
+        public BrowserCommandResult<bool> Cancel(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

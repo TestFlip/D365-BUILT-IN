@@ -459,9 +459,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         /// </summary>
         /// <param name="controls">The activityparty lookup field name, value or index of the lookup.</param>
         /// <example>xrmApp.Entity.AddValues(new LookupItem[] { new LookupItem { Name = "to", Value = "A. Datum Corporation (sample)" } });</example>
-        public void AddValues(LookupItem[] controls, int index = 0)
+        public void AddValues(LookupItem[] controls, int index)
         {
             _client.AddValues(controls, index);
+        }
+
+        /// <summary>
+        /// Adds values to an ActivityParty Lookup.
+        /// </summary>
+        /// <param name="controls">The activityparty lookup field name, value or index of the lookup.</param>
+        /// <example>xrmApp.Entity.AddValues(new LookupItem[] { new LookupItem { Name = "to", Value = "A. Datum Corporation (sample)" } });</example>
+        public void AddValues(LookupItem[] controls)
+        {
+            AddValues(controls, 0);
         }
 
         /// <summary>

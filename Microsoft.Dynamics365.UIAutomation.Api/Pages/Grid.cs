@@ -34,7 +34,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the view picker.
         /// </summary>
-        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker()
+        {
+            return OpenViewPicker(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens the view picker.
+        /// </summary>
+        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -91,9 +99,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switches the view.
         /// </summary>
         /// <param name="viewName">Name of the view.</param>
+        /// <example>xrmBrowser.Grid.SwitchView("Active Accounts");</example>
+        public BrowserCommandResult<bool> SwitchView(string viewName)
+        {
+            return SwitchView(viewName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Switches the view.
+        /// </summary>
+        /// <param name="viewName">Name of the view.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.SwitchView("Active Accounts");</example>
-        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -124,13 +142,21 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             });
         }
 
-
+        /// <summary>
+        /// Opens the chart.
+        /// </summary>
+        /// <example>xrmBrowser.Grid.OpenChart();</example>
+        public BrowserCommandResult<bool> OpenChart()
+        {
+            return OpenChart(Constants.DefaultThinkTime);
+        }
+        
         /// <summary>
         /// Opens the chart.
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.OpenChart();</example>
-        public BrowserCommandResult<bool> OpenChart(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenChart(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -162,9 +188,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Pins this instance.
         /// </summary>
-        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.Pin();</example>
-        public BrowserCommandResult<bool> Pin(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Pin()
+        {
+            return Pin(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Pins this instance.
+        /// </summary>
+        /// <example>xrmBrowser.Grid.Pin();</example>
+        public BrowserCommandResult<bool> Pin(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -180,10 +214,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Searches the specified search criteria.
         /// </summary>
         /// <param name="searchCriteria">The search criteria.</param>
+        /// <example>xrmBrowser.Grid.Search("Test API");</example>
+        public BrowserCommandResult<bool> Search(string searchCriteria)
+        {
+            return Search(searchCriteria, true, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Searches the specified search criteria.
+        /// </summary>
+        /// <param name="searchCriteria">The search criteria.</param>
         /// <param name="clearByDefault">By default, clear existing search criteria</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.Search("Test API");</example>
-        public BrowserCommandResult<bool> Search(string searchCriteria, bool clearByDefault = true, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Search(string searchCriteria, bool clearByDefault, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -206,9 +250,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Clears the search box on the grid
         /// </summary>
+        /// <example>xrmBrowser.Grid.ClearSearch();</example>
+        public BrowserCommandResult<bool> ClearSearch()
+        {
+            return ClearSearch(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Clears the search box on the grid
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.ClearSearch();</example>
-        public BrowserCommandResult<bool> ClearSearch(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> ClearSearch(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -226,9 +279,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sorts the specified column name.
         /// </summary>
         /// <param name="columnName">Name of the column.</param>
+        /// <example>xrmBrowser.Grid.Sort("Account Name");</example>
+        public BrowserCommandResult<bool> Sort(string columnName)
+        {
+            return Sort(columnName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Sorts the specified column name.
+        /// </summary>
+        /// <param name="columnName">Name of the column.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.Sort("Account Name");</example>
-        public BrowserCommandResult<bool> Sort(string columnName,int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> Sort(string columnName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -248,9 +311,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Opens the grid record.
         /// </summary>
         /// <param name="index">The index.</param>
+        /// <example>xrmBrowser.Grid.OpenRecord(0);</example>
+        public BrowserCommandResult<bool> OpenRecord(int index)
+        {
+            return OpenRecord(index, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens the grid record.
+        /// </summary>
+        /// <param name="index">The index.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.OpenRecord(0);</example>
-        public BrowserCommandResult<bool> OpenRecord(int index,int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> OpenRecord(int index,int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -300,9 +373,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the grid record.
         /// </summary>
         /// <param name="index">The index of the row you want to select. Index starts with 0.</param>
+        /// <example>xrmBrowser.Grid.SelectRecord(1);</example>
+        public BrowserCommandResult<bool> SelectRecord(int index)
+        {
+            return SelectRecord(index, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Selects the grid record.
+        /// </summary>
+        /// <param name="index">The index of the row you want to select. Index starts with 0.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.SelectRecord(1);</example>
-        public BrowserCommandResult<bool> SelectRecord(int index, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectRecord(int index, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -324,10 +407,21 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Filters the by letter.
         /// </summary>
         /// <param name="filter">The filter.</param>
+        /// <example>xrmBrowser.Grid.FilterByLetter('A');</example>
+        /// <exception cref="System.InvalidOperationException">Filter criteria is not valid.</exception>
+        public BrowserCommandResult<bool> FilterByLetter(char filter)
+        {
+            return FilterByLetter(filter, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Filters the by letter.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.FilterByLetter('A');</example>
         /// <exception cref="System.InvalidOperationException">Filter criteria is not valid.</exception>
-        public BrowserCommandResult<bool> FilterByLetter(char filter, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> FilterByLetter(char filter, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -352,9 +446,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Filters the by all.
         /// </summary>
+        /// <example>xrmBrowser.Grid.FilterByAll();</example>
+        public BrowserCommandResult<bool> FilterByAll()
+        {
+            return FilterByAll(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Filters the by all.
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.FilterByAll();</example>
-        public BrowserCommandResult<bool> FilterByAll(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> FilterByAll(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -371,9 +474,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the filter.
         /// </summary>
+        /// <example>xrmBrowser.Grid.EnableFilter();</example>
+        public BrowserCommandResult<bool> EnableFilter()
+        {
+            return EnableFilter(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Opens the filter.
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.EnableFilter();</example>
-        public BrowserCommandResult<bool> EnableFilter(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> EnableFilter(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -392,9 +504,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switches the chart on the Grid.
         /// </summary>
         /// <param name="chartName">Name of the chart.</param>
+        /// <example>xrmBrowser.Grid.SwitchChart("Accounts by Owner");</example>
+        public BrowserCommandResult<bool> SwitchChart(string chartName)
+        {
+            return SwitchChart(chartName, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Switches the chart on the Grid.
+        /// </summary>
+        /// <param name="chartName">Name of the chart.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.SwitchChart("Accounts by Owner");</example>
-        public BrowserCommandResult<bool> SwitchChart(string chartName, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SwitchChart(string chartName, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

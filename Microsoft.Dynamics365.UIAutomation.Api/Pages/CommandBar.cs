@@ -34,9 +34,29 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Returns the values of CommandBar objects
         /// </summary>
         /// <param name="moreCommands">The moreCommands</param>
+        /// <example>xrmBrowser.Related.ClickCommand("ADD NEW CASE");</example>
+        public BrowserCommandResult<List<string>> GetCommandValues()
+        {
+            return GetCommandValues(false);
+        }
+
+        /// <summary>
+        /// Returns the values of CommandBar objects
+        /// </summary>
+        /// <param name="moreCommands">The moreCommands</param>
+        /// <example>xrmBrowser.Related.ClickCommand("ADD NEW CASE");</example>
+        public BrowserCommandResult<List<string>> GetCommandValues(bool includeMoreCommandsValues)
+        {
+            return GetCommandValues(includeMoreCommandsValues, Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Returns the values of CommandBar objects
+        /// </summary>
+        /// <param name="moreCommands">The moreCommands</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Related.ClickCommand("ADD NEW CASE");</example>
-        public BrowserCommandResult<List<string>> GetCommandValues(bool includeMoreCommandsValues = false, int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<List<string>> GetCommandValues(bool includeMoreCommandsValues, int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 

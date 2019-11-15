@@ -26,9 +26,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Closes the Notifications
         /// </summary>
+        /// <example>xrmBrowser.Notifications.CloseNotifications();</example>
+        public BrowserCommandResult<bool> CloseNotifications()
+        {
+            return CloseNotifications(Constants.DefaultThinkTime);
+        }
+
+        /// <summary>
+        /// Closes the Notifications
+        /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Notifications.CloseNotifications();</example>
-        public BrowserCommandResult<bool> CloseNotifications(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> CloseNotifications(int thinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
