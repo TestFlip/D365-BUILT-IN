@@ -65,8 +65,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.UCI
 
                 xrmApp.BusinessProcessFlow.SelectStage("Qualify");
 
-                xrmApp.BusinessProcessFlow.SetValue(acct);
-                xrmApp.BusinessProcessFlow.SetValue(contact);
+                xrmApp.BusinessProcessFlow.SetValue(acct, 0);
+                xrmApp.BusinessProcessFlow.SetValue(contact, 0);
                 xrmApp.BusinessProcessFlow.SetValue("budgetamount", "100.00");
 
                 xrmApp.ThinkTime(3000);

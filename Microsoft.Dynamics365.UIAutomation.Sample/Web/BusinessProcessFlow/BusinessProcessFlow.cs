@@ -150,7 +150,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
 
                 xrmBrowser.BusinessProcessFlow.SelectStage(0);
 
-                xrmBrowser.BusinessProcessFlow.SetActive();
+                xrmBrowser.BusinessProcessFlow.SetActive(true);
 
             }
         }
@@ -242,7 +242,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
 
                 xrmBrowser.ThinkTime(2000);
 
-                xrmBrowser.BusinessProcessFlow.NextStage(0, 2000);
+                xrmBrowser.BusinessProcessFlow.NextStage(0);
 
                 xrmBrowser.ThinkTime(2000);
 

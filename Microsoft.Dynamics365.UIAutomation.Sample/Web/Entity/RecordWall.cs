@@ -40,7 +40,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
         {
             if (!HasData) return;
             XrmTestBrowser.ActivityFeed.SelectTab(Api.Pages.ActivityFeed.Tab.Activities);
-            XrmTestBrowser.ActivityFeed.AddPhoneCall("Test Phone call Description", false);
+            XrmTestBrowser.ActivityFeed.AddPhoneCall("Test Phone call Description", false, true);
             XrmTestBrowser.ThinkTime(5000);
             
         }
