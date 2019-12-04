@@ -72,6 +72,7 @@
     <Compile Include="Elements\OnlineLogin.cs" />
     <Compile Include="Elements\Navigation.cs" />
     <Compile Include="Elements\RelatedGrid.cs" />
+    <Compile Include="Elements\ThinkTime.cs" />
     <Compile Include="Elements\Timeline.cs" />
     <Compile Include="LoginRedirectEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
