@@ -32,6 +32,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.UCI
         }
 
         /// <summary>
+        /// Logs into the organization via single sign-on
+        /// </summary>
+        /// <param name="orgUrl">URL of the organization</param>
+        public void LoginSSO(String orgUrl)
+        {
+            _client.Browser.Driver.Navigate().GoToUrl(orgUrl);
+
+            if (_client.Browser.Options.UCITestMode)
+            {
+                _client.InitializeTestMode(true);
+            }
+        }
+
+        /// <summary>
         /// Logs into the organization with the user and password provided
         /// </summary>
         /// <param name="orgUrl">URL of the organization</param>
