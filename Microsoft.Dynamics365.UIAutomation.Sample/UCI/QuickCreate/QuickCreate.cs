@@ -19,6 +19,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.UCI
         public void UCITestQuickCreateContact()
         {
             var client = new WebClient(TestSettings.Options);
+
             using (var xrmApp = new XrmApp(client))
             {
                 xrmApp.OnlineLogin.Login(_xrmUri, _username, _password);
