@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Dynamics365.UIAutomation.Tests.Pages
+namespace Pages
 {
     public class BasePage : Element
     {
-        private readonly WebClient _client;
+        protected readonly WebClient _client;
 
         public BasePage(WebClient driver)
         {
