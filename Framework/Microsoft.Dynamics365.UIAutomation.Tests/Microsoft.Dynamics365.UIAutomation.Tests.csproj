@@ -81,15 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Pages\ContactFormLatest.cs" />
-    <Compile Include="Pages\ContactsMenuBar.cs" />
-    <Compile Include="Pages\Contact_form_with_lookups.cs" />
-    <Compile Include="Pages\CRM_Home_page.cs" />
-    <Compile Include="Pages\NewContact.cs" />
-    <Compile Include="Pages\Title_lookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestSettings.cs" />
-    <Compile Include="Tests\CreateContact_DefaultProfile.cs" />
     <Compile Include="Tests\TestBase.cs" />
     <Compile Include="Utilities\GetScreenShot.cs" />
     <Compile Include="Utilities\TestModellerLogger.cs" />
