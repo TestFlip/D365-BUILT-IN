@@ -46,6 +46,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Tests.Tests
         [TestInitialize]
         public void initDriver()
         {
+            TestModellerLogger.steps.Clear();
+
             testPathRun = new TestPathRunEntity();
 
             driver = new WebClient(TestSettings.Options);
